@@ -8,13 +8,15 @@ import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { CreateticketComponent } from './createticket/createticket.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { BookmarkedticketComponent } from './bookmarkedticket/bookmarkedticket.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = 
 [
   {path:'welcomepage', component:WelcomepageComponent},
   {path:'createticket', component:CreateticketComponent},
   {path:'ticket', component:TicketComponent},
-  {path:'bookmarkedticket', component:BookmarkedticketComponent}
+  {path:'bookmarkedticket', component:BookmarkedticketComponent},
+  {path:'**',component:CreateticketComponent}
 ]
 
 @NgModule({
@@ -28,7 +30,8 @@ const routes: Routes =
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
