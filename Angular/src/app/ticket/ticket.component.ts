@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APICallService } from '../apicall.service';
 
+
 @Component({
   selector: 'app-ticket',
   templateUrl: './ticket.component.html',
@@ -10,12 +11,13 @@ export class TicketComponent implements OnInit {
 
   constructor(private api:APICallService) { }
 
-  tickets:any
+  tickets:any = [];
 
   ngOnInit(): void 
   {
-    this.tickets=this.api.getAllTickets()
-
+     this.api.getAllTickets().subscribe(
+      (response) => {this.tickets = response;}
+    ) 
   }
 
 }
