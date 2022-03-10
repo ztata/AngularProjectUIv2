@@ -35,7 +35,6 @@ export class APICallService {
 
   returnTicketById(id: any){
     return this.http.get('https://localhost:44305/api/ticket', id);
-
   }
 
   //Allows tickets to be added to the 'Ticket' Db

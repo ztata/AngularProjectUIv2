@@ -15,14 +15,9 @@ export class TicketComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    //this.tickets=this.api.getAllTickets();
-
      this.api.getAllTickets().subscribe(
       (response) => {this.tickets = response;}
     ) 
-
-    //this.tickets = this.api.returnMockData()
-    //this.api.dndAPITestCall().subscribe((response) => {this.tickets = response})
   }
 
 }
