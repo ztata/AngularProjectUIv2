@@ -15,6 +15,7 @@ export class TicketComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    // this.tickets=this.api.mockTickets
      this.api.getAllTickets().subscribe(
       (response) => {this.tickets = response;}
     )

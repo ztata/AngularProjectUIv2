@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpClientModule}from '@angular/common/http';
+import {HttpClient, HttpErrorResponse}from '@angular/common/http';
 import { ITicket } from './Interfaces/ITicket';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 
 @Injectable
 ({
@@ -42,9 +42,14 @@ export class APICallService {
   //Allows tickets to be added to the 'Ticket' Db
   addTicket(ticket: ITicket)
   {
-    return this.http.post(this.apiUri,ticket)
+    console.log("add ticket")
+    console.log(ticket)
+    return this.http.post('https://localhost:44305/api/ticket',ticket)
+
   }
 
+ 
+  
   //Allows ticket to be replaced at specified ID
   updateTicket(ticket: ITicket, id: number){
     return this.http.put(`${this.apiUri}/${id}`, ticket);
@@ -53,5 +58,18 @@ export class APICallService {
   //delete ticket at specified ID
   deleteTicket(id: number){
     return this.http.delete(`${this.apiUri}/${id}`);
+  
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, body was: `, error.error);
+    }
+    // Return an observable with a user-facing error message.
   }
+  
 }
