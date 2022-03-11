@@ -1,1 +1,34 @@
 <h1>Create A Ticket!</h1>
+
+<div>
+    <form #ticketForm="ngForm" (ngSubmit)="createTicket(ticketForm)">
+    <div>
+        <label for="ticketName">Title:</label>
+        <input name="ticketName" id="ticketName" ngModel />
+    </div>
+    <div>
+        <label for="createdBy">Author:</label>
+        <input name="createdBy" id="createdBy" ngModel />
+    </div>
+    <div>
+        <label for="ticketDescription">Description:</label>
+        <input name="ticketDescription" id="ticketDescription" ngModel />
+    </div>
+    <div>
+        <label for="isResolved">Completion Status:</label>
+        <input name="isResolved" id="isResolved" ngModel />
+    </div>
+    <div>
+        <label for="completedBy">Person that Completed it:</label>
+        <input name="completedBy" id="completedBy" ngModel />
+    </div>
+    <div>
+        <label for="resolutionNotes">Additional Notes:</label>
+        <input name="resolutionNotes" id="resolutionNotes" ngModel />
+    </div>
+
+    <div>
+        <button type="submit">Create</button>
+      </div>
+    </form>
+</div>

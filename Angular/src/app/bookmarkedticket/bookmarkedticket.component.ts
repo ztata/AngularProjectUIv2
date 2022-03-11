@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { APICallService } from '../apicall.service';
 
 @Component({
   selector: 'app-bookmarkedticket',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookmarkedticketComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api:APICallService) { }
 
-  ngOnInit(): void {
+  tickets:any = [];
+
+  ngOnInit(): void 
+  {
+        this.tickets=this.api.mockTickets
+        // this.api.getAllTickets().subscribe(
+        //   (response) => {this.tickets = response;}
+        // ) 
   }
 
 }
