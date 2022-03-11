@@ -1,31 +1,9 @@
 <h1>Ticket List</h1>
 <hr>
 
-<!-- <ul >
-    <div *ngFor="let ticket of tickets.allTickets">
+ <ul >
+    <div *ngFor="let ticket of tickets">
         <li>{{ticket.ticketName}}</li>
     </div>
-</ul> -->
+</ul>  
 
-<table class="table table-hover">
-    <thead>
-        <th>ID:</th>
-        <th>Ticket Name:</th>
-        <th>Created By:</th>
-        <th>Ticket Description:</th>
-        <th>Resolved?</th>
-        <th>Completed By:</th>
-        <th>Resolution Notes:</th>
-    </thead>
-    <tbody>
-            <tr *ngFor="let ticket of tickets.allTickets">
-                <td>{{ticket.id}}</td>
-                <td>{{ticket.ticketName}}</td>
-                <td>{{ticket.createdBy}}</td>
-                <td>{{ticket.ticketDescription}}</td>
-                <td>{{ticket.isResolved}}</td>
-                <td>{{ticket.completedBy}}</td>
-                <td>{{ticket.resolutionNotes}}</td>
-            </tr>
-    </tbody>
-</table>

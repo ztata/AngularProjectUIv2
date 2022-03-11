@@ -16,6 +16,8 @@ export class APICallService {
     {id: 3, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'}
   ];
 
+  apiUri: string = 'https://localhost:44305/api/ticket';
+
   //mock data for testing HTML displays
   returnMockData(){
     return this.mockTickets;
@@ -27,19 +29,29 @@ export class APICallService {
     return this.http.get('https://www.dnd5eapi.co/api/races');
   }
 
-  //Returns all ticjets from the 'Tickets' Db
+  //Returns all tickets from the 'Tickets' Db
   getAllTickets()
   {
-    return this.http.get('https://localhost:44305/api/ticket');
+    return this.http.get(this.apiUri);
   }
 
-  returnTicketById(id: any){
-    return this.http.get('https://localhost:44305/api/ticket', id);
+  returnTicketById(id: number){
+    return this.http.get(`${this.apiUri}/${id}`);
   }
 
   //Allows tickets to be added to the 'Ticket' Db
-  addTicket(ticket: any)
+  addTicket(ticket: ITicket)
   {
-    return this.http.post('https://localhost:44305/api/ticket',ticket)
+    return this.http.post(this.apiUri,ticket)
+  }
+
+  //Allows ticket to be replaced at specified ID
+  updateTicket(ticket: ITicket, id: number){
+    return this.http.put(`${this.apiUri}/${id}`, ticket);
+  }
+
+  //delete ticket at specified ID
+  deleteTicket(id: number){
+    return this.http.delete(`${this.apiUri}/${id}`);
   }
 }
