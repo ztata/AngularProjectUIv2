@@ -5,5 +5,5 @@ export interface ITicket{
   ticketDescription: string;
   isResolved: boolean;
   completedBy: string;
-  resolutionNotes: string
+  resolutionNotes: string;
 }

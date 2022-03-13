@@ -1,9 +1,22 @@
-<h1>Ticket List</h1>
+<h3>View All Tickets</h3>
 <hr>
-
-<ul>
-    <div *ngFor="let ticket of tickets.allTickets">
-        <li>{{ticket.ticketName}}</li>
-    </div>
-</ul>  
-
+<br>
+<div *ngFor="let ticket of tickets.allTickets">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ticket.ticketName}}
+            </mat-panel-title>
+            <mat-panel-description>
+                Created By: {{ticket.createdBy}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <li>Description: {{ticket.ticketDescription}}</li>
+        <li>Is Resolved?: {{ticket.isResolved}}</li>
+        <li>Completed By: {{ticket.completedBy}}</li>
+        <li>Resolution Notes: {{ticket.resolutionNotes}}</li>
+        <mat-action-row>
+            <button mat-raised-button color="primary" (click)="markAsResolved(ticket.id)">Mark As Completed</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+</div>

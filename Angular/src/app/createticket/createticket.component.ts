@@ -11,14 +11,14 @@ import { formatNumber } from '@angular/common';
 })
 export class CreateticketComponent implements OnInit 
 {
-  // ticket: ITicket | any
+   ticket: ITicket | any
 
   constructor(private api: APICallService) { }
   
   createTicket( form: NgForm )
   {
     console.log("creating ticket")
-    let ticket: ITicket = 
+     let ticket: ITicket = 
     {
       id: form.form.value.id,
       ticketName: form.form.value.ticketName,
@@ -28,7 +28,7 @@ export class CreateticketComponent implements OnInit
       completedBy: form.form.value.completedBy,
       resolutionNotes: form.form.value.resolutionNotes
 
-    }
+    } 
     this.api.addTicket(ticket)
     console.log("finished")
   }

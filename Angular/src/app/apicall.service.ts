@@ -47,29 +47,28 @@ export class APICallService {
     return this.http.post('https://localhost:44305/api/ticket',ticket)
 
   }
-
- 
   
   //Allows ticket to be replaced at specified ID
-  updateTicket(ticket: ITicket, id: number){
-    return this.http.put(`${this.apiUri}/${id}`, ticket);
+  MarkTicketResolved(id: number){
+    return this.http.put(`${this.apiUri}/${id}`, id);
   }
 
   //delete ticket at specified ID
   deleteTicket(id: number){
     return this.http.delete(`${this.apiUri}/${id}`);
-  
-  private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
-      console.error(
-        `Backend returned code ${error.status}, body was: `, error.error);
-    }
-    // Return an observable with a user-facing error message.
   }
+  
+  // private handleError(error: HttpErrorResponse) {
+  //   if (error.status === 0) {
+  //     // A client-side or network error occurred. Handle it accordingly.
+  //     console.error('An error occurred:', error.error);
+  //   } else {
+  //     // The backend returned an unsuccessful response code.
+  //     // The response body may contain clues as to what went wrong.
+  //     console.error(
+  //       `Backend returned code ${error.status}, body was: `, error.error);
+  //   }
+  //   // Return an observable with a user-facing error message.
+  // }
   
 }
