@@ -20,7 +20,7 @@ export class CreateticketComponent implements OnInit
     console.log("creating ticket")
      let ticket: ITicket = 
     {
-      id: form.form.value.id,
+      // id: form.form.value.id,
       ticketName: form.form.value.ticketName,
       createdBy: form.form.value.createdBy,
       ticketDescription: form.form.value.ticketDescription,

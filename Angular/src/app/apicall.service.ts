@@ -10,18 +10,18 @@ import { catchError, Observable } from 'rxjs';
 export class APICallService {
 
   constructor(private http:HttpClient) {}
-  mockTickets: ITicket[] = [
-    {id: 3, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
-    {id: 3, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
-    {id: 3, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'}
-  ];
+  // mockTickets: ITicket[] = [
+  //   {id: 3, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
+  //   {id: 3, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
+  //   {id: 3, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'}
+  // ];
 
   apiUri: string = 'https://localhost:44305/api/ticket';
 
   //mock data for testing HTML displays
-  returnMockData(){
-    return this.mockTickets;
-  }
+  // returnMockData(){
+  //   return this.mockTickets;
+  // }
 
   //Reliable API call for testing HTML Displays
   dndAPITestCall()
@@ -44,8 +44,7 @@ export class APICallService {
   {
     console.log("add ticket")
     console.log(ticket)
-    return this.http.post('https://localhost:44305/api/ticket',ticket)
-
+    return this.http.post('https://localhost:44305/api/ticket',ticket).subscribe()
   }
   
   //Marks ticket as resolved
@@ -72,5 +71,5 @@ export class APICallService {
   //   }
   //   // Return an observable with a user-facing error message.
   // }
-  
+
 }
