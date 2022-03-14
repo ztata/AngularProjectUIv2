@@ -46,17 +46,18 @@ export class APICallService {
     console.log(ticket)
     return this.http.post('https://localhost:44305/api/ticket',ticket).subscribe()
   }
-
   
-  
-  //Allows ticket to be replaced at specified ID
-  updateTicket(ticket: ITicket, id: number){
-    return this.http.put(`${this.apiUri}/${id}`, ticket);
+  //Marks ticket as resolved
+  updateTicket(updatedTicket: ITicket){
+    console.log(`calling updated ticket api service function`)
+    console.log(updatedTicket)
+    return this.http.put(`${this.apiUri}/${updatedTicket.id}`, updatedTicket).subscribe();
   }
 
   //delete ticket at specified ID
   deleteTicket(id: number){
-    return this.http.delete(`${this.apiUri}/${id}`);
+    return this.http.delete(`${this.apiUri}/${id}`).subscribe();
+  }
   
   // private handleError(error: HttpErrorResponse) {
   //   if (error.status === 0) {
@@ -70,5 +71,5 @@ export class APICallService {
   //   }
   //   // Return an observable with a user-facing error message.
   // }
-  }
+
 }
