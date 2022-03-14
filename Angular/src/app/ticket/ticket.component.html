@@ -4,10 +4,10 @@
 <div *ngFor="let ticket of tickets.allTickets">
     <mat-expansion-panel>
         <mat-expansion-panel-header>
-            <mat-panel-title>
+            <mat-panel-title class="mat-panel-title">
                 {{ticket.ticketName}}
             </mat-panel-title>
-            <mat-panel-description>
+            <mat-panel-description class="mat-panel-description">
                 Created By: {{ticket.createdBy}}
             </mat-panel-description>
         </mat-expansion-panel-header>
