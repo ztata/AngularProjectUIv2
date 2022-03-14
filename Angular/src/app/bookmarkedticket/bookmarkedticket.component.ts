@@ -3,6 +3,7 @@ import { APICallService } from '../apicall.service';
 import { IFavoritedTicket } from '../Interfaces/iFavoritedTicket';
 import { ITicket } from '../Interfaces/ITicket';
 
+
 @Component({
   selector: 'app-bookmarkedticket',
   templateUrl: './bookmarkedticket.component.html',
@@ -25,13 +26,19 @@ export class BookmarkedticketComponent implements OnInit {
         this.api.getAllFavoriteTickets().subscribe(
           (response) => {this.allFavTickets = response;}
          ) 
+        
+         this.getFavortedtickets(this.tickets, this.filteredTickets)
      
   }
 
 getFavortedtickets(ticketList: ITicket[], favTicketList: IFavoritedTicket[]) {
 
-//this.filteredTickets = ticketList.filter()
-//return this.filteredTickets = ticketList.filter()
+this.filteredTickets = ticketList.filter((el) =>{
+  return favTicketList.some((f) => {
+    return f.TicketId === el.id; 
+  });
+});
+
 }
 
 }
