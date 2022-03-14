@@ -18,6 +18,8 @@ export class APICallService {
   ];
 
   apiUri: string = 'https://localhost:44305/api/ticket';
+  
+  apiUriFT: string = 'https://localhost:44305/api/FavoritedTicket';
 
   //mock data for testing HTML displays
    returnMockData(){
@@ -34,6 +36,12 @@ export class APICallService {
   getAllTickets()
   {
     return this.http.get(this.apiUri);
+  }
+
+  //Returns all Favorite tickets from the 'FavoritedTickets' Db
+  getAllFavoriteTickets()
+  {
+    return this.http.get(this.apiUriFT)
   }
 
   returnTicketById(id: number){
