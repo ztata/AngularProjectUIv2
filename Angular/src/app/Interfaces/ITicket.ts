@@ -1,5 +1,5 @@
 export interface ITicket{
-  id: number;
+  //id: number;
   ticketName: string;
   createdBy: string;
   ticketDescription: string;

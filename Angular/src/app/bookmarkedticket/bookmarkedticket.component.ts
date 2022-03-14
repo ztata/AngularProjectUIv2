@@ -14,7 +14,7 @@ export class BookmarkedticketComponent implements OnInit {
 
   ngOnInit(): void 
   {
-        this.tickets=this.api.mockTickets
+        // this.tickets=this.api.mockTickets
         // this.api.getAllTickets().subscribe(
         //   (response) => {this.tickets = response;}
         // ) 
