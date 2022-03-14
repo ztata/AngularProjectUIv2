@@ -16,7 +16,8 @@
         <th>Resolution Notes:</th>
     </thead>
     <tbody>
-            <tr *ngFor="let ticket of filteredTickets">
+            <!--  <tr *ngFor="let ticket of filteredTickets"> -->
+                <tr *getFavortedticket="let ticket of filteredTickets">
                 <td>{{ticket.ticketName}}</td>
                 <td>{{ticket.ticketDescription}}</td>
                 <td>{{ticket.isResolved}}</td>
