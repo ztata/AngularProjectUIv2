@@ -3,6 +3,7 @@ import { APICallService } from '../apicall.service';
 import { NgForm } from '@angular/forms';
 import { ITicket } from '../Interfaces/ITicket';
 import { formatNumber } from '@angular/common';
+import {IAPITicket} from '../Interfaces/IAPITicket'
 @Component
 ({
   selector: 'app-createticket',
@@ -18,13 +19,11 @@ export class CreateticketComponent implements OnInit
   createTicket( form: NgForm )
   {
     console.log("creating ticket")
-     let ticket: ITicket = 
+     let ticket: IAPITicket = 
     {
-      // id: form.form.value.id,
       ticketName: form.form.value.ticketName,
       createdBy: form.form.value.createdBy,
       ticketDescription: form.form.value.ticketDescription,
-      isResolved: form.form.value.isResolved,
       completedBy: form.form.value.completedBy,
       resolutionNotes: form.form.value.resolutionNotes
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse}from '@angular/common/http';
 import { ITicket } from './Interfaces/ITicket';
 import { catchError, Observable } from 'rxjs';
+import { IAPITicket } from './Interfaces/IAPITicket';
 
 @Injectable
 ({
@@ -10,18 +11,18 @@ import { catchError, Observable } from 'rxjs';
 export class APICallService {
 
   constructor(private http:HttpClient) {}
-  // mockTickets: ITicket[] = [
-  //   {id: 3, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
-  //   {id: 3, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
-  //   {id: 3, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'}
-  // ];
+   mockTickets: ITicket[] = [
+     {id: 3, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
+     {id: 4, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
+     {id: 5, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'}
+  ];
 
   apiUri: string = 'https://localhost:44305/api/ticket';
 
   //mock data for testing HTML displays
-  // returnMockData(){
-  //   return this.mockTickets;
-  // }
+   returnMockData(){
+     return this.mockTickets;
+   }
 
   //Reliable API call for testing HTML Displays
   dndAPITestCall()
@@ -40,7 +41,7 @@ export class APICallService {
   }
 
   //Allows tickets to be added to the 'Ticket' Db
-  addTicket(ticket: ITicket)
+  addTicket(ticket: IAPITicket)
   {
     console.log("add ticket")
     console.log(ticket)
