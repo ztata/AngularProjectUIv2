@@ -48,14 +48,16 @@ export class APICallService {
 
   }
   
-  //Allows ticket to be replaced at specified ID
-  MarkTicketResolved(id: number){
-    return this.http.put(`${this.apiUri}/${id}`, id);
+  //Marks ticket as resolved
+  updateTicket(updatedTicket: ITicket){
+    console.log(`calling updated ticket api service function`)
+    console.log(updatedTicket)
+    return this.http.put(`${this.apiUri}/${updatedTicket.id}`, updatedTicket).subscribe();
   }
 
   //delete ticket at specified ID
   deleteTicket(id: number){
-    return this.http.delete(`${this.apiUri}/${id}`);
+    return this.http.delete(`${this.apiUri}/${id}`).subscribe();
   }
   
   // private handleError(error: HttpErrorResponse) {
