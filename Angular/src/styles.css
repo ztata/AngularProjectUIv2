@@ -1,13 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body {
+     height: 100%; 
+    }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
     flex-basis: 20%;
 }
 
+.help-tickets-title{
+    text-align: center;
+}
 
-.mark-as-resolved-button{
-    margin-left: 31% !important;
+#update-ticket-resolution-title, .help-tickets-title{
+    text-decoration: underline;
+}
+
+.bold{
+    font-weight: bold;
+}
+.add-to-favorites-button{
+    background-color: #007849 !important;
+}
+/* .form-control{
+    width: 25% !important;
+} */
+
+.update-expansion-panel{
+    width: 20%;
+    background-color: #d9d9dd;
 }

@@ -1,5 +1,4 @@
-<h3>View All Tickets</h3>
-<hr>
+<h2 class="help-tickets-title">Help Tickets</h2>
 <br>
 <div *ngFor="let ticket of tickets.allTickets">
     <mat-expansion-panel>
@@ -11,11 +10,19 @@
                 Created By: {{ticket.createdBy}}
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <li>Description: {{ticket.ticketDescription}}</li>
-        <li>Is Resolved?: {{ticket.isResolved}}</li>
-        <li>Completed By: {{ticket.completedBy}}</li>
-        <li>Resolution Notes: {{ticket.resolutionNotes}}</li>
-        <mat-action-row class="update-action-row">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span class="bold">Description:</span> {{ticket.ticketDescription}}</li>
+            <li class="list-group-item"><span class="bold">Is Resolved:</span> {{ticket.isResolved}}</li>
+            <li class="list-group-item"><span class="bold">Completed By:</span> {{ticket.completedBy}}</li>
+            <li class="list-group-item"><span class="bold">Resolution Notes:</span> {{ticket.resolutionNotes}}</li>
+        </ul>
+        <br>
+        <mat-expansion-panel class="update-expansion-panel">
+            <mat-expansion-panel-header class="update-expansion-header">
+                <mat-panel-title>
+                    Update Ticket Resolution
+                </mat-panel-title>
+            </mat-expansion-panel-header>
             <form  #updateTicketForm="ngForm" (ngSubmit)="updateTicket(updateTicketForm)" class="update-ticket-form">
                 <div hidden>
                     <input name="id" id="id" [(ngModel)]="ticket.id" ngModel />
@@ -43,23 +50,23 @@
                 </div>
                 <div class="form-group">
                     <label for="resolutionNotes">Resolution Notes:</label>
-                    <input class="form-control" name="resolutionNotes" id="resolutionNotes" [(ngModel)]="ticket.resolutionNotes" ngModel />
+                    <input class="form-control" name="resolutionNotes" id="resolutionNotes" [(ngModel)]="ticket.resolutionNotes" ngModel/>
                 </div>
                         <br>   
                 <div>
-                    <button mat-raised-button color="primary" type="submit" class="mark-as-resolved-button">Mark As Resolved</button>
+                    <button mat-raised-button color="primary" type="submit" class="mark-as-resolved-button">Update Ticket Resolution</button>
                   </div>
                 </form>
-
-                
-        </mat-action-row>
-        <mat-action-row>
-            <!--THIS BUTTON CURRENTLY DOES NOTHING-->
-            <button mat-raised-button color="primary"(click)="createFavTicket(ticket.id)">Add To Favorites</button>
-            <!--THIS BUTTON CURRENTLY DOES NOTHING-->
-        </mat-action-row>
-        <mat-action-row>
-            <button mat-raised-button color="warn" (click)="deleteTicket(ticket.id)">Delete Ticket</button>
-        </mat-action-row>
+        </mat-expansion-panel>
+            <br>
+            <div>
+                <!--THIS BUTTON CURRENTLY DOES NOTHING-->
+                <button mat-raised-button color="primary" class="add-to-favorites-button">Add To Favorites</button>
+                <!--THIS BUTTON CURRENTLY DOES NOTHING-->
+            </div>
+            <br>
+            <div>
+                <button mat-raised-button color="warn" (click)="deleteTicket(ticket.id)">Delete Ticket</button>
+      </div>
     </mat-expansion-panel>
 </div>

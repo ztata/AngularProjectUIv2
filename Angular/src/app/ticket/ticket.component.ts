@@ -44,11 +44,13 @@ export class TicketComponent implements OnInit {
     } 
     
     this.api.updateTicket(updatedTicket)
+    window.location.reload();
   }
 
   deleteTicket(id: number) {
     console.log('delete ticket button works');
     this.api.deleteTicket(id);
+    window.location.reload();
   }
 
 

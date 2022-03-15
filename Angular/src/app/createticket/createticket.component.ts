@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { ITicket } from '../Interfaces/ITicket';
 import { formatNumber } from '@angular/common';
 import {IAPITicket} from '../Interfaces/IAPITicket'
+import { Router } from '@angular/router';
 @Component
 ({
   selector: 'app-createticket',
