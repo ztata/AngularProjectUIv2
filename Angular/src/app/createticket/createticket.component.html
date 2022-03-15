@@ -4,32 +4,34 @@
     <form #ticketForm="ngForm" (ngSubmit)="createTicket(ticketForm)">
     <div class="form-group">
         <label for="ticketName">Title:</label>
-        <input name="ticketName" id="ticketName" class="form-control" [(ngModel)]="ticket.ticketName"/>
+        <input name="ticketName" id="ticketName" class="form-control" ngModel/>
     </div>
     <div class="form-group">
         <label for="createdBy">Author:</label>
-        <input name="createdBy" id="createdBy" class="form-control" [(ngModel)]="ticket.createdBy" />
+        <input name="createdBy" id="createdBy" class="form-control" ngModel />
     </div>
     <div class="form-group">
         <label for="ticketDescription">Description:</label>
-        <input name="ticketDescription" id="ticketDescription" class="form-control" [(ngModel)]="ticket.ticketDescription" />
+        <input name="ticketDescription" id="ticketDescription" class="form-control" ngModel />
     </div>
-    <!-- <div>
+    <div hidden>
         <label for="isResolved">Completion Status:</label>
         <input name="isResolved" id="isResolved" ngModel />
-    </div> -->
-    <div class="form-group">
+    </div> 
+    <div class="form-group" hidden>
         <label for="completedBy">Person that Completed it:</label>
-        <input name="completedBy" id="completedBy" class="form-control" [(ngModel)]="ticket.completedBy" />
+        <input name="completedBy" id="completedBy" class="form-control" ngModel />
     </div>
-    <div class="form-group">
+    <div class="form-group" hidden>
         <label for="resolutionNotes">Additional Notes:</label>
-        <input name="resolutionNotes" id="resolutionNotes" class="form-control" [(ngModel)]="ticket.resolutionNotes" />
+        <input name="resolutionNotes" id="resolutionNotes" class="form-control" ngModel />
     </div>
 
-    <div>
-        <button type="submit">Create</button>
-    </div>
+    
+        <div>
+            <button type="submit" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="Ticket Made">Create</button>
+        </div>    
+    
 
     </form>
 </div>

@@ -27,8 +27,8 @@ export class CreateticketComponent implements OnInit
       ticketDescription: form.form.value.ticketDescription,
       completedBy: form.form.value.completedBy,
       resolutionNotes: form.form.value.resolutionNotes
-
     } 
+    console.log(ticket)
     this.api.addTicket(ticket)
     console.log("finished")
   }
