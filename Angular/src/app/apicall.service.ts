@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse}from '@angular/common/http';
 import { ITicket } from './Interfaces/ITicket';
 import { catchError, Observable } from 'rxjs';
 import { IAPITicket } from './Interfaces/IAPITicket';
+import { IFavoritedTicket } from './Interfaces/iFavoritedTicket';
 
 @Injectable
 ({
@@ -16,6 +17,7 @@ export class APICallService {
      {id: 4, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
      {id: 5, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'}
   ];
+
 
   apiUri: string = 'https://localhost:44305/api/ticket';
   
