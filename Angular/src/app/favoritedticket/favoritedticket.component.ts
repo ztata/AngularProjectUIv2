@@ -17,7 +17,7 @@ export class FavoritedticketComponent implements OnInit {
   ngOnInit(): void 
   {
     this.api2.getAllTickets().subscribe(
-      (response2) => {this.tickets2 = response2;}
+      (response) => {this.tickets2 = response;}
     ) 
   }
 }
