@@ -1,16 +1,3 @@
-
-<!-- <nav class="navbar">
-<h1>Welcome {{loggedInUserID}}</h1>
-<div>
-  <form #userIDform="ngForm" (ngSubmit)="changeUserIDform(userIDform)">
-    <!-- <label for="LogUserID">Change User ID</label> -->
-    <input name="LogUserID" id="LogUserID" ngModel>
-    <button>Change user ID</button> 
-  </form>
-
-</div>
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <!-- Toggle button -->
@@ -55,6 +42,15 @@
  <a class="nav-item nav-link" routerLink="/favoritedticket"
 routerLinkActive="active">Favorited</a>
 </nav>
+
+<h1>Welcome {{loggedInUserID}}</h1>
+<div>
+  <form #userIDform="ngForm" (ngSubmit)="changeUserIDform(userIDform)">
+   <label for="LogUserID">Change User ID</label> -->
+    <input name="LogUserID" id="LogUserID" ngModel>
+    <button>Change user ID</button> 
+  </form>
+</div>
 
 <router-outlet></router-outlet>
 
