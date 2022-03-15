@@ -1,9 +1,9 @@
-<head>
+<!-- <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </head>
+  </head> -->
 
 <h1>Bookmarked Tickets</h1>
 
@@ -16,8 +16,8 @@
         <th>Resolution Notes:</th>
     </thead>
     <tbody>
-            <!--  <tr *ngFor="let ticket of filteredTickets"> -->
-                <tr *getFavortedticket="let ticket of filteredTickets">
+            <tr *ngFor="let ticket of filteredTickets"> 
+            <!-- <tr *getFavortedticket="let ticket of filteredTickets"> -->
                 <td>{{ticket.ticketName}}</td>
                 <td>{{ticket.ticketDescription}}</td>
                 <td>{{ticket.isResolved}}</td>
@@ -27,5 +27,58 @@
             </tr>
     </tbody>
 </table>
+
+
+<table class="table table-hover">
+    <thead>
+        <th>Ticket Name:</th>
+        <th>Ticket Description:</th>
+        <th>Resolved?</th>
+        <th>Completed By:</th>
+        <th>Resolution Notes:</th>
+    </thead>
+    <tbody>
+            <tr *ngFor="let ticket of alltickets"> 
+            <!-- <tr *getFavortedticket="let ticket of filteredTickets"> -->
+                <td>{{ticket.ticketName}}</td>
+                <td>{{ticket.ticketDescription}}</td>
+                <td>{{ticket.isResolved}}</td>
+                <td>{{ticket.completedBy}}</td>
+                <td>{{ticket.resolutionNotes}}</td>
+                <!-- some sort of edit option -->
+            </tr>
+    </tbody>
+</table>
+
+<table class="table table-hover">
+    <thead>
+        <th>Ticket Name:</th>
+        <th>Ticket Description:</th>
+        <th>Resolved?</th>
+        <th>Completed By:</th>
+        <th>Resolution Notes:</th>
+    </thead>
+    <tbody>
+           <!-- <tr *ngFor="let ticket of tickets"> -->
+             <tr *getFavortedticket="let ticket of filteredTickets"> 
+                <td>{{ticket.ticketName}}</td>
+                <td>{{ticket.ticketDescription}}</td>
+                <td>{{ticket.isResolved}}</td>
+                <td>{{ticket.completedBy}}</td>
+                <td>{{ticket.resolutionNotes}}</td>
+                <!-- some sort of edit option -->
+            </tr>
+    </tbody>
+</table>
+
+
+
+<ul>
+    <div *ngFor="let ticket of alltickets">
+        <li>{{ticket.ticketName}}</li>
+    </div>
+</ul>
+
+
 
 
