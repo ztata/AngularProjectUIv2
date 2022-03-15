@@ -15,7 +15,7 @@ export class CreateticketComponent implements OnInit
 {
    ticket: ITicket | any
 
-  constructor(private api: APICallService, private router: Router) { }
+  constructor(private api: APICallService) { }
   
   createTicket( form: NgForm )
   {
@@ -31,7 +31,6 @@ export class CreateticketComponent implements OnInit
     } 
     this.api.addTicket(ticket)
     console.log("finished")
-    this.router.navigate(['/ticket'])
   }
 
   ngOnInit(): void 
