@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule,Routes } from '@angular/router';
-import {CdkTableModule} from '@angular/cdk/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 
@@ -23,9 +22,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
 
 const routes: Routes = 
 [
+  {path:'',redirectTo:'ticket', pathMatch: 'full' },
+  {path:'ticket', component:TicketComponent},
   {path:'welcomepage', component:WelcomepageComponent},
   {path:'createticket', component:CreateticketComponent},
-  {path:'ticket', component:TicketComponent},
   {path:'bookmarkedticket', component:BookmarkedticketComponent},
   {path:'favoritedticket', component:FavoritedticketComponent},
   {path:'**',component:CreateticketComponent}
@@ -46,15 +46,13 @@ const routes: Routes =
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CdkTableModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatListModule,
     MatButtonModule ,
     MatExpansionModule,
     MatFormFieldModule,
-    MatInputModule
-     
+    MatInputModule    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,33 +2,34 @@
 
 <div>
     <form #ticketForm="ngForm" (ngSubmit)="createTicket(ticketForm)">
-    <div>
+    <div class="form-group">
         <label for="ticketName">Title:</label>
-        <input name="ticketName" id="ticketName" ngModel />
+        <input name="ticketName" id="ticketName" class="form-control" [(ngModel)]="ticket.ticketName"/>
     </div>
-    <div>
+    <div class="form-group">
         <label for="createdBy">Author:</label>
-        <input name="createdBy" id="createdBy" ngModel />
+        <input name="createdBy" id="createdBy" class="form-control" [(ngModel)]="ticket.createdBy" />
     </div>
-    <div>
+    <div class="form-group">
         <label for="ticketDescription">Description:</label>
-        <input name="ticketDescription" id="ticketDescription" ngModel />
+        <input name="ticketDescription" id="ticketDescription" class="form-control" [(ngModel)]="ticket.ticketDescription" />
     </div>
     <!-- <div>
         <label for="isResolved">Completion Status:</label>
         <input name="isResolved" id="isResolved" ngModel />
     </div> -->
-    <div>
+    <div class="form-group">
         <label for="completedBy">Person that Completed it:</label>
-        <input name="completedBy" id="completedBy" ngModel />
+        <input name="completedBy" id="completedBy" class="form-control" [(ngModel)]="ticket.completedBy" />
     </div>
-    <div>
+    <div class="form-group">
         <label for="resolutionNotes">Additional Notes:</label>
-        <input name="resolutionNotes" id="resolutionNotes" ngModel />
+        <input name="resolutionNotes" id="resolutionNotes" class="form-control" [(ngModel)]="ticket.resolutionNotes" />
     </div>
 
     <div>
         <button type="submit">Create</button>
-      </div>
+    </div>
+
     </form>
 </div>
