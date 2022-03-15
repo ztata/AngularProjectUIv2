@@ -4,6 +4,7 @@ import { ITicket } from './Interfaces/ITicket';
 import { catchError, Observable } from 'rxjs';
 import { IAPITicket } from './Interfaces/IAPITicket';
 import { IFavoritedTicket } from './Interfaces/iFavoritedTicket';
+import { IAPIFavTicket }    from './Interfaces/IAPIFavTicket'
 
 @Injectable
 ({
@@ -57,7 +58,14 @@ export class APICallService {
     console.log(ticket)
     return this.http.post('https://localhost:44305/api/ticket',ticket).subscribe()
   }
-  
+   //Allows fav tickets to be added to the 'FavoritedTickets' Db
+  addFavTicket(favTicket: IAPIFavTicket)
+  {
+    console.log("add fav ticket")
+    console.log(favTicket)
+    return this.http.post('https://localhost:44305/api/FavoritedTicket',favTicket).subscribe()
+  }
+
   //Marks ticket as resolved
   updateTicket(updatedTicket: ITicket){
     console.log(`calling updated ticket api service function`)
@@ -69,7 +77,7 @@ export class APICallService {
   deleteTicket(id: number){
     return this.http.delete(`${this.apiUri}/${id}`).subscribe();
   }
-  
+
   // private handleError(error: HttpErrorResponse) {
   //   if (error.status === 0) {
   //     // A client-side or network error occurred. Handle it accordingly.

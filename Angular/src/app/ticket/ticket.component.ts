@@ -3,6 +3,7 @@ import { APICallService } from '../apicall.service';
 import { ITicket } from '../Interfaces/ITicket';
 import { MatFormField } from '@angular/material/form-field';
 import { NgForm } from '@angular/forms';
+import { IAPIFavTicket } from '../Interfaces/IAPIFavTicket';
 
 
 @Component({
@@ -47,5 +48,16 @@ export class TicketComponent implements OnInit {
     console.log('delete ticket button works');
     this.api.deleteTicket(id);
   }
-  
+
+  createFavTicket(userId: string, Ticketid: number)
+  {
+  let favTicket: IAPIFavTicket =
+  {
+    userID: userId,
+    TicketId: Ticketid
+  }
+
+  this.api.addFavTicket(favTicket)
+  console.log("add FavTick finished")
+ }
 }

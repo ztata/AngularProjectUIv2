@@ -8,13 +8,13 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-bookmarkedticket',
   templateUrl: './bookmarkedticket.component.html',
-  styleUrls: ['./bookmarkedticket.component.css']
+  styleUrls: ['./bookmarkedticket.component.css'],
 })
 export class BookmarkedticketComponent implements OnInit {
 
   constructor(private api:APICallService) { }
 
-  tickets:any = [];
+  alltickets:any = [];
   allFavTickets: any = []; 
   filteredTickets: any = []; 
 
@@ -31,7 +31,7 @@ export class BookmarkedticketComponent implements OnInit {
   ngOnInit(): void 
   {
         this.api.getAllTickets().subscribe(
-          (response) => {this.tickets = response;}
+          (response) => {this.alltickets = response;}
         )
 
         //console.log(this.tickets); 
@@ -44,19 +44,19 @@ export class BookmarkedticketComponent implements OnInit {
 
          //this.getFavortedtickets(this.tickets, this.allFavTickets)
          
-         //this.getFavortedtickets(this.mockTickets, this.mockFavTickets)
+         this.getFavortedtickets(this.mockTickets, this.mockFavTickets)
   }
 
-getFavortedtickets(ticketList: ITicket[], favTicketList: IFavoritedTicket[]) {
+getFavortedtickets(ticketList: ITicket[], favTicketList: IFavoritedTicket[]) 
+{
 
-this.filteredTickets = ticketList.filter((el) =>{
-  return favTicketList.some((f) => {
-    return f.TicketId === el.id; 
+ this.filteredTickets = ticketList.filter((el) =>
+  {
+    return favTicketList.some((f) => 
+    {
+       return f.TicketId === el.id; 
+    });
   });
-});
-
-//console.log(this.filteredTickets); 
-
 }
 
 }
