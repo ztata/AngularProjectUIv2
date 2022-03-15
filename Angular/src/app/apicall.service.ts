@@ -3,6 +3,9 @@ import {HttpClient, HttpErrorResponse}from '@angular/common/http';
 import { ITicket } from './Interfaces/ITicket';
 import { catchError, Observable } from 'rxjs';
 import { IAPITicket } from './Interfaces/IAPITicket';
+import { IFavoritedTicket } from './Interfaces/iFavoritedTicket';
+import { IAPIFavTicket }    from './Interfaces/IAPIFavTicket'
+import { AppComponent } from './app.component';
 
 @Injectable
 ({
@@ -16,6 +19,10 @@ export class APICallService {
      {id: 4, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
      {id: 5, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'}
   ];
+ 
+  //Get logged user ID for FavTicket record creation. 
+  appcomponent = new AppComponent; 
+  LoggedInUserID = this.appcomponent.loggedInUserID; 
 
   apiUri: string = 'https://localhost:44305/api/ticket';
   
@@ -55,7 +62,14 @@ export class APICallService {
     console.log(ticket)
     return this.http.post('https://localhost:44305/api/ticket',ticket).subscribe()
   }
-  
+   //Allows fav tickets to be added to the 'FavoritedTickets' Db
+  addFavTicket(favTicket: IAPIFavTicket)
+  {
+    console.log("add fav ticket")
+    console.log(favTicket)
+    return this.http.post('https://localhost:44305/api/FavoritedTicket',favTicket).subscribe()
+  }
+
   //Marks ticket as resolved
   updateTicket(updatedTicket: ITicket){
     console.log(`calling updated ticket api service function`)
@@ -67,7 +81,7 @@ export class APICallService {
   deleteTicket(id: number){
     return this.http.delete(`${this.apiUri}/${id}`).subscribe();
   }
-  
+
   // private handleError(error: HttpErrorResponse) {
   //   if (error.status === 0) {
   //     // A client-side or network error occurred. Handle it accordingly.

@@ -5,7 +5,7 @@
     <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title class="mat-panel-title">
-                {{ticket.ticketName}}
+                <strong>{{ticket.ticketName}}</strong>
             </mat-panel-title>
             <mat-panel-description class="mat-panel-description">
                 Created By: {{ticket.createdBy}}
@@ -15,36 +15,48 @@
         <li>Is Resolved?: {{ticket.isResolved}}</li>
         <li>Completed By: {{ticket.completedBy}}</li>
         <li>Resolution Notes: {{ticket.resolutionNotes}}</li>
-        <mat-action-row>
-            <form  #updateTicketForm="ngForm" (ngSubmit)="updateTicket(updateTicketForm)">
+        <mat-action-row class="update-action-row">
+            <form  #updateTicketForm="ngForm" (ngSubmit)="updateTicket(updateTicketForm)" class="update-ticket-form">
                 <div hidden>
                     <input name="id" id="id" [(ngModel)]="ticket.id" ngModel />
                 </div>
-                <div class="form-group">
-                    <label for="createdBy">Author:</label>
-                    <input name="createdBy" id="createdBy" [(ngModel)]="ticket.createdBy" ngModel />
+                <div hidden>
+                    <input name="ticketName" id="ticketName" [(ngModel)]="ticket.ticketName" ngModel />
                 </div>
-                <div class="form-group">
+                <div class="form-group" hidden>
+                    <label for="createdBy">Created By:</label>
+                    <input class="form-control" name="createdBy" id="createdBy" [(ngModel)]="ticket.createdBy" ngModel />
+                </div>
+                <div class="form-group" hidden>
                     <label for="ticketDescription">Description:</label>
-                    <input name="ticketDescription" id="ticketDescription" [(ngModel)]="ticket.ticketDescription" ngModel />
+                    <input class="form-control" name="ticketDescription" id="ticketDescription" [(ngModel)]="ticket.ticketDescription" ngModel />
+                </div>
+                
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="isResolved" name="isResolved" [(ngModel)]="ticket.isResolved" ngModel value="true">
+                    <label for="isResolved" form-check-label>Completed?</label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="completedBy">Completed By:</label>
+                    <input class="form-control" name="completedBy" id="completedBy" [(ngModel)]="ticket.completedBy" ngModel />
                 </div>
                 <div class="form-group">
-                    <label for="isResolved">Completion Status:</label>
-                    <input name="isResolved" id="isResolved" [(ngModel)]="ticket.isResolved" ngModel />
+                    <label for="resolutionNotes">Resolution Notes:</label>
+                    <input class="form-control" name="resolutionNotes" id="resolutionNotes" [(ngModel)]="ticket.resolutionNotes" ngModel />
                 </div>
-                <div class="form-group">
-                    <label for="completedBy">Person that Completed it:</label>
-                    <input name="completedBy" id="completedBy" [(ngModel)]="ticket.completedBy" ngModel />
-                </div>
-                <div class="form-group">
-                    <label for="resolutionNotes">Additional Notes:</label>
-                    <input name="resolutionNotes" id="resolutionNotes" [(ngModel)]="ticket.resolutionNotes" ngModel />
-                </div>
-            
+                        <br>   
                 <div>
-                    <button mat-raised-button color="primary" type="submit">Update Ticket</button>
+                    <button mat-raised-button color="primary" type="submit" class="mark-as-resolved-button">Mark As Resolved</button>
                   </div>
                 </form>
+
+                
+        </mat-action-row>
+        <mat-action-row>
+            <!--THIS BUTTON CURRENTLY DOES NOTHING-->
+            <button mat-raised-button color="primary"(click)="createFavTicket(ticket.id)">Add To Favorites</button>
+            <!--THIS BUTTON CURRENTLY DOES NOTHING-->
         </mat-action-row>
         <mat-action-row>
             <button mat-raised-button color="warn" (click)="deleteTicket(ticket.id)">Delete Ticket</button>

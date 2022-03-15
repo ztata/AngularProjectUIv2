@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { CreateticketComponent } from './createticket/createticket.component';
+import { FavoritedticketComponent } from './favoritedticket/favoritedticket.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { BookmarkedticketComponent } from './bookmarkedticket/bookmarkedticket.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +20,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 
-
 const routes: Routes = 
 [
   {path:'',redirectTo:'ticket', pathMatch: 'full' },
@@ -27,6 +27,7 @@ const routes: Routes =
   {path:'welcomepage', component:WelcomepageComponent},
   {path:'createticket', component:CreateticketComponent},
   {path:'bookmarkedticket', component:BookmarkedticketComponent},
+  {path:'favoritedticket', component:FavoritedticketComponent},
   {path:'**',component:CreateticketComponent}
 ]
 
@@ -36,7 +37,8 @@ const routes: Routes =
     WelcomepageComponent,
     CreateticketComponent,
     TicketComponent,
-    BookmarkedticketComponent
+    BookmarkedticketComponent,
+    FavoritedticketComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -1,3 +1,12 @@
+<h1>Welcome {{loggedInUserID}}</h1>
+<div>
+  <form #userIDform="ngForm" (ngSubmit)="changeUserIDform(userIDform)">
+    <!-- <label for="LogUserID">Change User ID</label> -->
+    <input name="LogUserID" id="LogUserID" ngModel>
+    <button>Change user ID</button> 
+  </form>
+
+</div>
 <nav class="navbar">
   <a class="nav-item nav-link" routerLink="/welcomepage"
   routerLinkActive="active">Home</a>
@@ -7,5 +16,8 @@ routerLinkActive="active">Create</a>
 routerLinkActive="active">Tickets</a>
   <a class="nav-item nav-link" routerLink="/bookmarkedticket"
 routerLinkActive="active">Bookmarked</a>
+ <a class="nav-item nav-link" routerLink="/favoritedticket"
+routerLinkActive="active">Favorited</a>
 </nav>
 <router-outlet></router-outlet>
+

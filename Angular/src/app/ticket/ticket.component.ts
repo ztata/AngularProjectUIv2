@@ -3,6 +3,8 @@ import { APICallService } from '../apicall.service';
 import { ITicket } from '../Interfaces/ITicket';
 import { MatFormField } from '@angular/material/form-field';
 import { NgForm } from '@angular/forms';
+import { IAPIFavTicket } from '../Interfaces/IAPIFavTicket';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -15,7 +17,8 @@ export class TicketComponent implements OnInit {
   constructor(private api:APICallService) { }
 
   tickets:any = [];
-  
+  appcomponent = new AppComponent; 
+  LoggedInUserID: string = this.appcomponent.loggedInUserID; 
 
   ngOnInit(): void 
   {
@@ -47,5 +50,19 @@ export class TicketComponent implements OnInit {
     console.log('delete ticket button works');
     this.api.deleteTicket(id);
   }
-  
+
+
+
+  //createFavTicket(userId: string, Ticketid: number)
+  createFavTicket(Ticketid: number, userId:string=this.LoggedInUserID)
+  {
+  let favTicket: IAPIFavTicket =
+  {
+    userID: userId,
+    TicketId: Ticketid
+  }
+
+  this.api.addFavTicket(favTicket)
+  console.log("add FavTick finished")
+ }
 }
