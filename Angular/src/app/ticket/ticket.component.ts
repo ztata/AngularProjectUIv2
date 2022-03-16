@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APICallService } from '../apicall.service';
 import { ITicket } from '../Interfaces/ITicket';
-import { MatFormField } from '@angular/material/form-field';
 import { NgForm } from '@angular/forms';
-import { IAPIFavTicket } from '../Interfaces/IAPIFavTicket';
-import { AppComponent } from '../app.component';
 import { IBookmarkedTicket } from '../Interfaces/IBookmarkedTicket';
 import { IResolvedTicket } from '../Interfaces/IResolvedTicket';
 
@@ -19,8 +16,6 @@ export class TicketComponent implements OnInit {
   constructor(private api:APICallService) { }
 
   tickets:any = [];
-  appcomponent = new AppComponent; 
-  LoggedInUserID: string = this.appcomponent.loggedInUserID; 
 
   ngOnInit(): void 
   {

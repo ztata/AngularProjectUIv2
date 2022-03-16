@@ -1,13 +1,13 @@
-<h1>Create A Ticket!</h1>
+<h1 id="create-ticket-title">Create A Ticket</h1>
 
 <div>
-    <form #ticketForm="ngForm" (ngSubmit)="createTicket(ticketForm)">
+    <form #ticketForm="ngForm" (ngSubmit)="createTicket(ticketForm)" id="create-ticket-form">
     <div class="form-group">
         <label for="ticketName">Title:</label>
         <input name="ticketName" id="ticketName" class="form-control" ngModel/>
     </div>
     <div class="form-group">
-        <label for="createdBy">Author:</label>
+        <label for="createdBy">Created By:</label>
         <input name="createdBy" id="createdBy" class="form-control" ngModel />
     </div>
     <div class="form-group">
@@ -29,9 +29,12 @@
 
     
         <div>
-            <button type="submit" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="Ticket Made">Create</button>
+            <button type="submit" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="Ticket Made" id="create-ticket-button">Create</button>
         </div>    
     
 
     </form>
+</div>
+<div *ngIf="showHiddenText" id="ticket-submission-text">
+    <h3>Thanks for your submission! Check the tickets page to view all created tickets.</h3>
 </div>
