@@ -23,7 +23,7 @@
                 </mat-expansion-panel-header>
                 <form  #updateTicketForm="ngForm" (ngSubmit)="updateTicket(updateTicketForm)" class="update-ticket-form">
                     <div hidden>
-                        <input name="id" id="id" [(ngModel)]="bookmarkedTicket.ticketId" ngModel />
+                        <input name="id" id="id" [(ngModel)]="bookmarkedTicket.id" ngModel />
                     </div>
                     <div hidden>
                         <input name="ticketName" id="ticketName" [(ngModel)]="bookmarkedTicket.ticketName" ngModel />

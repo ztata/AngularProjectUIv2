@@ -37,7 +37,7 @@ export class BookmarkedticketComponent implements OnInit {
 
     let resolvedticket: IResolvedTicket = 
     {
-      ticketId: form.form.value.id,
+      ticketId: form.form.value.ticketId,
       ticketName: form.form.value.ticketName,
       createdBy: form.form.value.createdBy,
       ticketDescription: form.form.value.ticketDescription,
