@@ -31,3 +31,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 20%;
     background-color: #d9d9dd;
 }
+
+#create-ticket-button{
+    margin-top: 2%;
+}
+
+#create-ticket-form{
+    width: 50%;
+    margin-left: 2.5%;
+}
+
+#create-ticket-title{
+    margin-left: 2.5%;
+    margin-top: 2.5%;
+}
+
+#ticket-submission-text{
+    margin-left: 2.5%;
+    margin-top: 2.5%;
+}

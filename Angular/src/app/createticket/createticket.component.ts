@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { APICallService } from '../apicall.service';
 import { NgForm } from '@angular/forms';
 import { ITicket } from '../Interfaces/ITicket';
-import { formatNumber } from '@angular/common';
 import {IAPITicket} from '../Interfaces/IAPITicket'
-import { Router } from '@angular/router';
 @Component
 ({
   selector: 'app-createticket',
@@ -13,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class CreateticketComponent implements OnInit 
 {
-   ticket: ITicket | any
+   ticket: ITicket | any;
+   showHiddenText: boolean = false;
 
   constructor(private api: APICallService) { }
   
@@ -31,6 +30,7 @@ export class CreateticketComponent implements OnInit
     console.log(ticket)
     this.api.addTicket(ticket)
     console.log("finished")
+    this.showHiddenText = true;
   }
 
   ngOnInit(): void 

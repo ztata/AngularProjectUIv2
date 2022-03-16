@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse}from '@angular/common/http';
 import { ITicket } from './Interfaces/ITicket';
-import { catchError, Observable } from 'rxjs';
 import { IAPITicket } from './Interfaces/IAPITicket';
-import { IFavoritedTicket } from './Interfaces/iFavoritedTicket';
-import { IAPIFavTicket }    from './Interfaces/IAPIFavTicket'
-import { AppComponent } from './app.component';
-import { tick } from '@angular/core/testing';
 import { IBookmarkedTicket } from './Interfaces/IBookmarkedTicket';
 import { IResolvedTicket } from './Interfaces/IResolvedTicket';
 
@@ -17,24 +12,31 @@ import { IResolvedTicket } from './Interfaces/IResolvedTicket';
 export class APICallService {
 
   constructor(private http:HttpClient) {}
-   mockTickets: ITicket[] = [
+  
+  mockTickets: ITicket[] = [
      {id: 3, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
      {id: 4, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
      {id: 5, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'}
   ];
 
-  apiUri: string = 'https://localhost:44305/api/ticket';
+    //mock ticket data for testing HTML displays
+    returnMockData(){
+      return this.mockTickets;
+    }
+
+  apiTicketUri: string = 'https://localhost:44305/api/ticket';
+  apiBookmarkedUri: string = 'https://localhost:44305/api/bookmarkedticket';
+  apiResolvedUri:string = 'https://localhost:44305/api/resolvedticket';
   
 
-  //mock ticket data for testing HTML displays
-   returnMockData(){
-     return this.mockTickets;
-   }
+  /*
+        TICKET DATABASE METHODS
+  */
 
   //Returns all tickets from the 'Tickets' Db
   getAllTickets()
   {
-    return this.http.get(this.apiUri);
+    return this.http.get(this.apiTicketUri);
   }
 
    //Allows tickets to be added to the 'Ticket' Db
@@ -42,46 +44,56 @@ export class APICallService {
    {
      console.log("add ticket")
      console.log(ticket)
-     return this.http.post('https://localhost:44305/api/ticket',ticket).subscribe()
+     return this.http.post(this.apiTicketUri,ticket).subscribe()
    }
 
-    //Marks ticket as resolved
+    //updates ticket information in ticket db
   updateTicket(updatedTicket: ITicket){
     console.log(`calling updated ticket api service function`)
     console.log(updatedTicket)
-    return this.http.put(`${this.apiUri}/${updatedTicket.id}`, updatedTicket).subscribe();
+    return this.http.put(`${this.apiTicketUri}/${updatedTicket.id}`, updatedTicket).subscribe();
   }
 
   //delete ticket from ticket db
   deleteTicket(id: number){
-    return this.http.delete(`${this.apiUri}/${id}`).subscribe();
+    return this.http.delete(`${this.apiTicketUri}/${id}`).subscribe();
   }
+
+   /*
+        BOOKMARKED TICKET DATABASE METHODS
+  */
 
   //returns bookmarked tickets from bookmarked db
   getAllBookmarkedTickets(){
-    return this.http.get('https://localhost:44305/api/bookmarkedticket')
+    return this.http.get(this.apiBookmarkedUri)
   }
 
-  //add bookmarked ticket to database
+  //add bookmarked ticket to bookmarked database
   bookmarkTicket(ticket: IBookmarkedTicket){
-    return this.http.post('https://localhost:44305/api/bookmarkedticket', ticket).subscribe();
+    return this.http.post(this.apiBookmarkedUri, ticket).subscribe();
   }
 
   //deletes bookmarked ticket from bookmarked db
   deleteBookmarkedTicket(id: number){
-    return this.http.delete(`https://localhost:44305/api/bookmarkedticket/${id}`).subscribe();
+    return this.http.delete(`${this.apiBookmarkedUri}/${id}`).subscribe();
   }
+
+   /*
+        TRESOLVED ICKET DATABASE METHODS
+  */
 
   //returns all resolved tickets 
   getAllResolvedTickets(){
-    return this.http.get('https://localhost:44305/api/resolvedticket');
+    return this.http.get(this.apiResolvedUri);
   }
 
+  //adds resolved ticket to resolve db
   addResolvedTicket(ticket: IResolvedTicket){
-    return this.http.post('https://localhost:44305/api/resolvedticket', ticket).subscribe();
+    return this.http.post(this.apiResolvedUri, ticket).subscribe();
   }
 
+  //deletes resolved ticket from resolved db
   deleteResolvedTicket(id:number){
-    return this.http.delete(`https://localhost:44305/api/resolvedticket/${id}`).subscribe();
+    return this.http.delete(`${this.apiResolvedUri}/${id}`).subscribe();
   }
 }
