@@ -6,6 +6,9 @@ import { IAPITicket } from './Interfaces/IAPITicket';
 import { IFavoritedTicket } from './Interfaces/iFavoritedTicket';
 import { IAPIFavTicket }    from './Interfaces/IAPIFavTicket'
 import { AppComponent } from './app.component';
+import { tick } from '@angular/core/testing';
+import { IBookmarkedTicket } from './Interfaces/IBookmarkedTicket';
+import { IResolvedTicket } from './Interfaces/IResolvedTicket';
 
 @Injectable
 ({
@@ -19,25 +22,14 @@ export class APICallService {
      {id: 4, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
      {id: 5, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'}
   ];
- 
-  //Get logged user ID for FavTicket record creation. 
-  appcomponent = new AppComponent; 
-  LoggedInUserID = this.appcomponent.loggedInUserID; 
 
   apiUri: string = 'https://localhost:44305/api/ticket';
   
-  apiUriFT: string = 'https://localhost:44305/api/FavoritedTicket';
 
-  //mock data for testing HTML displays
+  //mock ticket data for testing HTML displays
    returnMockData(){
      return this.mockTickets;
    }
-
-  //Reliable API call for testing HTML Displays
-  dndAPITestCall()
-  {
-    return this.http.get('https://www.dnd5eapi.co/api/races');
-  }
 
   //Returns all tickets from the 'Tickets' Db
   getAllTickets()
@@ -45,54 +37,51 @@ export class APICallService {
     return this.http.get(this.apiUri);
   }
 
-  //Returns all Favorite tickets from the 'FavoritedTickets' Db
-  getAllFavoriteTickets()
-  {
-    return this.http.get(this.apiUriFT)
-  }
+   //Allows tickets to be added to the 'Ticket' Db
+   addTicket(ticket: IAPITicket)
+   {
+     console.log("add ticket")
+     console.log(ticket)
+     return this.http.post('https://localhost:44305/api/ticket',ticket).subscribe()
+   }
 
-  returnTicketById(id: number){
-    return this.http.get(`${this.apiUri}/${id}`);
-  }
-
-  //Allows tickets to be added to the 'Ticket' Db
-  addTicket(ticket: IAPITicket)
-  {
-    console.log("add ticket")
-    console.log(ticket)
-    return this.http.post('https://localhost:44305/api/ticket',ticket).subscribe()
-  }
-   //Allows fav tickets to be added to the 'FavoritedTickets' Db
-  addFavTicket(favTicket: IAPIFavTicket)
-  {
-    console.log("add fav ticket")
-    console.log(favTicket)
-    return this.http.post('https://localhost:44305/api/FavoritedTicket',favTicket).subscribe()
-  }
-
-  //Marks ticket as resolved
+    //Marks ticket as resolved
   updateTicket(updatedTicket: ITicket){
     console.log(`calling updated ticket api service function`)
     console.log(updatedTicket)
     return this.http.put(`${this.apiUri}/${updatedTicket.id}`, updatedTicket).subscribe();
   }
 
-  //delete ticket at specified ID
+  //delete ticket from ticket db
   deleteTicket(id: number){
     return this.http.delete(`${this.apiUri}/${id}`).subscribe();
   }
 
-  // private handleError(error: HttpErrorResponse) {
-  //   if (error.status === 0) {
-  //     // A client-side or network error occurred. Handle it accordingly.
-  //     console.error('An error occurred:', error.error);
-  //   } else {
-  //     // The backend returned an unsuccessful response code.
-  //     // The response body may contain clues as to what went wrong.
-  //     console.error(
-  //       `Backend returned code ${error.status}, body was: `, error.error);
-  //   }
-  //   // Return an observable with a user-facing error message.
-  // }
+  //returns bookmarked tickets from bookmarked db
+  getAllBookmarkedTickets(){
+    return this.http.get('https://localhost:44305/api/bookmarkedticket')
+  }
 
+  //add bookmarked ticket to database
+  bookmarkTicket(ticket: IBookmarkedTicket){
+    return this.http.post('https://localhost:44305/api/bookmarkedticket', ticket).subscribe();
+  }
+
+  //deletes bookmarked ticket from bookmarked db
+  deleteBookmarkedTicket(id: number){
+    return this.http.delete(`https://localhost:44305/api/bookmarkedticket/${id}`).subscribe();
+  }
+
+  //returns all resolved tickets 
+  getAllResolvedTickets(){
+    return this.http.get('https://localhost:44305/api/resolvedticket');
+  }
+
+  addResolvedTicket(ticket: IResolvedTicket){
+    return this.http.post('https://localhost:44305/api/resolvedticket', ticket).subscribe();
+  }
+
+  deleteResolvedTicket(id:number){
+    return this.http.delete(`https://localhost:44305/api/resolvedticket/${id}`).subscribe();
+  }
 }

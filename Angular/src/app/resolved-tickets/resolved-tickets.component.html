@@ -1,0 +1,32 @@
+<!-- <p>resolved-tickets works!</p>
+
+<ul>
+    <div *ngFor="let ticket of resolvedTickets.allResolvedTickets">
+        <li>{{ticket.ticketName}}</li>
+    </div>
+</ul> -->
+
+
+<h2 class="help-tickets-title">Resolved Tickets</h2>
+<br>
+<div *ngFor="let resolvedTicket of resolvedTickets.allResolvedTickets">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="mat-panel-title">
+                <strong>{{resolvedTicket.ticketName}}</strong>
+            </mat-panel-title>
+            <mat-panel-description class="mat-panel-description">
+                Completed By: {{resolvedTicket.completedBy}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span class="bold">Description:</span> {{resolvedTicket.ticketDescription}}</li>
+            <li class="list-group-item"><span class="bold">Created By:</span> {{resolvedTicket.createdBy}}</li>
+            <li class="list-group-item"><span class="bold">Resolution Notes:</span> {{resolvedTicket.resolutionNotes}}</li>
+        </ul>
+            <br>
+            <div>
+                <button mat-raised-button color="warn" (click)="deleteResolvedTicket(resolvedTicket.id)">Delete From Resolved</button>
+            </div>
+    </mat-expansion-panel>
+</div>

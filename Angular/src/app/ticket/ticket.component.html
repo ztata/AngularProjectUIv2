@@ -12,9 +12,6 @@
         </mat-expansion-panel-header>
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><span class="bold">Description:</span> {{ticket.ticketDescription}}</li>
-            <li class="list-group-item"><span class="bold">Is Resolved:</span> {{ticket.isResolved}}</li>
-            <li class="list-group-item"><span class="bold">Completed By:</span> {{ticket.completedBy}}</li>
-            <li class="list-group-item"><span class="bold">Resolution Notes:</span> {{ticket.resolutionNotes}}</li>
         </ul>
         <br>
         <mat-expansion-panel class="update-expansion-panel">
@@ -60,11 +57,21 @@
 
         </mat-expansion-panel>
             <br>
+        <mat-expansion-panel class="update-expansion-panel">
+            <mat-expansion-panel-header class="update-expansion-header">
+                <mat-panel-title>
+                    Add To Favorites
+                </mat-panel-title>
+            </mat-expansion-panel-header>
             <div>
-                <!--THIS BUTTON CURRENTLY DOES NOTHING-->
-                <button mat-raised-button color="primary" class="add-to-favorites-button">Add To Favorites</button>
-                <!--THIS BUTTON CURRENTLY DOES NOTHING-->
+                <form #bookmarkTicketForm="ngForm" (ngSubmit)="bookmarkTicket(ticket, bookmarkTicketForm)" class="update-ticket-form">
+                    <label for="userId">Enter user Id</label>
+                    <input class="form-control" name="userId" id="userId" ngModel/>
+                    <br>
+                    <button mat-raised-button color="primary" class="add-to-favorites-button">Add To Favorites</button>
+                </form>
             </div>
+        </mat-expansion-panel>
             <br>
             <div>
                 <button mat-raised-button color="warn" (click)="deleteTicket(ticket.id)">Delete Ticket</button>

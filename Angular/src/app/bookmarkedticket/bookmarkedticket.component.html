@@ -1,84 +1,65 @@
-<!-- <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </head> -->
-
-<h1>Bookmarked Tickets</h1>
-
-<table class="table table-hover">
-    <thead>
-        <th>Ticket Name:</th>
-        <th>Ticket Description:</th>
-        <th>Resolved?</th>
-        <th>Completed By:</th>
-        <th>Resolution Notes:</th>
-    </thead>
-    <tbody>
-            <tr *ngFor="let ticket of filteredTickets"> 
-            <!-- <tr *getFavortedticket="let ticket of filteredTickets"> -->
-                <td>{{ticket.ticketName}}</td>
-                <td>{{ticket.ticketDescription}}</td>
-                <td>{{ticket.isResolved}}</td>
-                <td>{{ticket.completedBy}}</td>
-                <td>{{ticket.resolutionNotes}}</td>
-                <!-- some sort of edit option -->
-            </tr>
-    </tbody>
-</table>
-
-
-<table class="table table-hover">
-    <thead>
-        <th>Ticket Name:</th>
-        <th>Ticket Description:</th>
-        <th>Resolved?</th>
-        <th>Completed By:</th>
-        <th>Resolution Notes:</th>
-    </thead>
-    <tbody>
-            <tr *ngFor="let ticket of alltickets"> 
-            <!-- <tr *getFavortedticket="let ticket of filteredTickets"> -->
-                <td>{{ticket.ticketName}}</td>
-                <td>{{ticket.ticketDescription}}</td>
-                <td>{{ticket.isResolved}}</td>
-                <td>{{ticket.completedBy}}</td>
-                <td>{{ticket.resolutionNotes}}</td>
-                <!-- some sort of edit option -->
-            </tr>
-    </tbody>
-</table>
-
-<table class="table table-hover">
-    <thead>
-        <th>Ticket Name:</th>
-        <th>Ticket Description:</th>
-        <th>Resolved?</th>
-        <th>Completed By:</th>
-        <th>Resolution Notes:</th>
-    </thead>
-    <tbody>
-           <!-- <tr *ngFor="let ticket of tickets"> -->
-             <tr *getFavortedticket="let ticket of filteredTickets"> 
-                <td>{{ticket.ticketName}}</td>
-                <td>{{ticket.ticketDescription}}</td>
-                <td>{{ticket.isResolved}}</td>
-                <td>{{ticket.completedBy}}</td>
-                <td>{{ticket.resolutionNotes}}</td>
-                <!-- some sort of edit option -->
-            </tr>
-    </tbody>
-</table>
-
-
-
-<ul>
-    <div *ngFor="let ticket of alltickets">
-        <li>{{ticket.ticketName}}</li>
-    </div>
-</ul>
-
-
-
-
+<h2 class="help-tickets-title">Bookmarked Tickets</h2>
+<br>
+<div *ngFor="let bookmarkedTicket of bookmarkedTickets.allBookmarkedTickets">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="mat-panel-title">
+                <strong>{{bookmarkedTicket.ticketName}}</strong>
+            </mat-panel-title>
+            <mat-panel-description class="mat-panel-description">
+                Favorited By: {{bookmarkedTicket.userId}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span class="bold">Description:</span> {{bookmarkedTicket.ticketDescription}}</li>
+            <li class="list-group-item"><span class="bold">Created By:</span> {{bookmarkedTicket.createdBy}}</li>
+        </ul>
+            <br>
+            <mat-expansion-panel class="update-expansion-panel">
+                <mat-expansion-panel-header class="update-expansion-header">
+                    <mat-panel-title>
+                        Update Ticket Resolution
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <form  #updateTicketForm="ngForm" (ngSubmit)="updateTicket(updateTicketForm)" class="update-ticket-form">
+                    <div hidden>
+                        <input name="id" id="id" [(ngModel)]="bookmarkedTicket.ticketId" ngModel />
+                    </div>
+                    <div hidden>
+                        <input name="ticketName" id="ticketName" [(ngModel)]="bookmarkedTicket.ticketName" ngModel />
+                    </div>
+                    <div class="form-group" hidden>
+                        <label for="createdBy">Created By:</label>
+                        <input class="form-control" name="createdBy" id="createdBy" [(ngModel)]="bookmarkedTicket.createdBy" ngModel />
+                    </div>
+                    <div class="form-group" hidden>
+                        <label for="ticketDescription">Description:</label>
+                        <input class="form-control" name="ticketDescription" id="ticketDescription" [(ngModel)]="bookmarkedTicket.ticketDescription" ngModel />
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="isResolved" name="isResolved" [(ngModel)]="bookmarkedTicket.isResolved" ngModel value="true">
+                        <label for="isResolved" form-check-label>Completed?</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="completedBy">Completed By:</label>
+                        <input class="form-control" name="completedBy" id="completedBy" [(ngModel)]="bookmarkedTicket.completedBy" ngModel />
+                    </div>
+                    <div class="form-group">
+                        <label for="resolutionNotes">Resolution Notes:</label>
+                        <input class="form-control" name="resolutionNotes" id="resolutionNotes" [(ngModel)]="bookmarkedTicket.resolutionNotes" ngModel/>
+                    </div>
+                            <br>   
+                    <div>
+                        <button mat-raised-button color="primary" type="submit" class="mark-as-resolved-button">Update Ticket Resolution</button>
+                      </div>
+                    </form>
+    
+            </mat-expansion-panel>
+            <br>
+            <div>
+                <button mat-raised-button color="warn" (click)="deleteBookmarkedTicket(bookmarkedTicket.id)">Delete From Bookmarked</button>
+            </div>
+    </mat-expansion-panel>
+</div>

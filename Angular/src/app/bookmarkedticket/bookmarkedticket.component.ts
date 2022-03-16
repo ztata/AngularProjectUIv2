@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { APICallService } from '../apicall.service';
-import { ITicket } from '../Interfaces/ITicket';
-import { IFavoritedTicket } from '../Interfaces/iFavoritedTicket';
 import { NgForm } from '@angular/forms';
+import { IResolvedTicket } from '../Interfaces/IResolvedTicket';
 
 
 @Component({
@@ -14,49 +13,44 @@ export class BookmarkedticketComponent implements OnInit {
 
   constructor(private api:APICallService) { }
 
-  alltickets:any = [];
-  allFavTickets: any = []; 
-  filteredTickets: any = []; 
-
-  mockFavTickets: IFavoritedTicket[] = [
-    {FavoriteId: 1, userID: "wed6", TicketId: 1}
-   ]; 
-
-   mockTickets: ITicket[] = [
-    {id: 1, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
-    {id: 4, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'},
-    {id: 5, ticketName: 'wefwef', ticketDescription: 'wefwef', createdBy: 'erfh', isResolved: false, completedBy: 'sdfwef', resolutionNotes: 'rferf'}
- ];
+  bookmarkedTickets:any = [];
+  
 
   ngOnInit(): void 
   {
-        this.api.getAllTickets().subscribe(
-          (response) => {this.alltickets = response;}
-        )
-
-        //console.log(this.tickets); 
-
-       /*  this.api.getAllFavoriteTickets().subscribe(
-          (response) => {this.allFavTickets = response;}
-         )  */
-
-         //console.log(this.allFavTickets); 
-
-         //this.getFavortedtickets(this.tickets, this.allFavTickets)
-         
-         this.getFavortedtickets(this.mockTickets, this.mockFavTickets)
+     this.api.getAllBookmarkedTickets().subscribe(
+      (response) => {this.bookmarkedTickets = response;}
+    ) 
+    console.log(this.bookmarkedTickets)
+    
   }
 
-getFavortedtickets(ticketList: ITicket[], favTicketList: IFavoritedTicket[]) 
-{
+  deleteBookmarkedTicket(id: number) {
+    console.log('delete ticket button works');
+    this.api.deleteBookmarkedTicket(id);
+    window.location.reload();
+  }
 
- this.filteredTickets = ticketList.filter((el) =>
-  {
-    return favTicketList.some((f) => 
+  updateTicket(form: NgForm){
+    console.log('update ticket button works')
+    console.log(form)
+
+    let resolvedticket: IResolvedTicket = 
     {
-       return f.TicketId === el.id; 
-    });
-  });
-}
+      ticketId: form.form.value.id,
+      ticketName: form.form.value.ticketName,
+      createdBy: form.form.value.createdBy,
+      ticketDescription: form.form.value.ticketDescription,
+      isResolved: form.form.value.isResolved,
+      completedBy: form.form.value.completedBy,
+      resolutionNotes: form.form.value.resolutionNotes      
+    }
+    this.api.addResolvedTicket(resolvedticket);
+
+    this.api.deleteBookmarkedTicket(form.form.value.id);
+
+    window.location.reload();
+  }
+
 
 }

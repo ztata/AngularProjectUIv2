@@ -32,7 +32,10 @@
       <a class="nav-item nav-link" routerLink="/ticket" routerLinkActive="active">Tickets</a>
     </li>
     <li class="nav-item">
-      <a class="nav-item nav-link" routerLink="/bookmarkedticket" routerLinkActive="active">Bookmarked</a>
+      <a class="nav-item nav-link" routerLink="/bookmarkedticket" routerLinkActive="active">Bookmarked Tickets</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item nav-link" routerLink="/resolved-tickets" routerLinkActive="active">Resolved Tickets</a>
     </li>
   </ul>
   <!-- Left links -->
@@ -42,15 +45,6 @@
  <a class="nav-item nav-link" routerLink="/favoritedticket"
 routerLinkActive="active">Favorited</a>
 </nav>
-
-<h1>Welcome {{loggedInUserID}}</h1>
-<div>
-  <form #userIDform="ngForm" (ngSubmit)="changeUserIDform(userIDform)">
-   <label for="LogUserID">Change User ID</label> -->
-    <input name="LogUserID" id="LogUserID" ngModel>
-    <button>Change user ID</button> 
-  </form>
-</div>
 
 <router-outlet></router-outlet>
 
