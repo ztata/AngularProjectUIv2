@@ -13,12 +13,11 @@ export class ResolvedTicketsComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.getAllResolvedTickets().subscribe(
-      (response) => {this.resolvedTickets = response;}
+      (response) => { this.resolvedTickets = response; }
     )
   }
 
-  deleteResolvedTicket(id: number){
-    console.log('delete ticket button works');
+  deleteResolvedTicket(id: number) {
     this.api.deleteResolvedTicket(id);
     window.location.reload();
   }
