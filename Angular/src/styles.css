@@ -30,6 +30,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .update-expansion-panel{
     width: 20%;
     background-color: #d9d9dd;
+    margin-left: 0 !important;
 }
 
 #create-ticket-button{
@@ -49,4 +50,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 #ticket-submission-text{
     margin-left: 2.5%;
     margin-top: 2.5%;
+}
+
+mat-expansion-panel{
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+    margin-top: 0.5% !important;
 }

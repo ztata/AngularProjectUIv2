@@ -15,9 +15,10 @@
             <li class="list-group-item"><span class="bold">Created By:</span> {{resolvedTicket.createdBy}}</li>
             <li class="list-group-item"><span class="bold">Resolution Notes:</span> {{resolvedTicket.resolutionNotes}}</li>
         </ul>
-            <br>
-            <div>
-                <button mat-raised-button color="warn" (click)="deleteResolvedTicket(resolvedTicket.id)">Delete From Resolved</button>
-            </div>
+        <br>
+        <div>
+            <button mat-raised-button color="warn" (click)="deleteResolvedTicket(resolvedTicket.id)">Delete From
+                Resolved</button>
+        </div>
     </mat-expansion-panel>
 </div>
